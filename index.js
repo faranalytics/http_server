@@ -1,5 +1,5 @@
 import { HTTPServer, HTTPRouter } from './modules/apis/src/index.js';
-import { HTTPFileServer } from './modules/apis/modules/http_file_server.js.js';
+import { HTTPFileServer } from './modules/apis/modules/http_file_server/http_file_server.js';
 
 const ngcepochcom = new HTTPFileServer({ 
     doc_root: '/opt/ngcepoch/ngcepoch.com/doc_root/' 
