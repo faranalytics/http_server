@@ -1,11 +1,12 @@
 import { HTTPServer, HTTPRouter } from './modules/apis/src/index.js';
 import { HTTPFileServer } from './modules/apis/modules/http_file_server/http_file_server.js';
+import { DynamicHTTPFileServer } from './modules/apis/modules/dynamic_http_file_server/dynamic_http_file_server.js';
 
-const ngcepochcom = new HTTPFileServer({ 
+const ngcepochcom = new DynamicHTTPFileServer({ 
     doc_root: '/opt/ngcepoch/ngcepoch.com/doc_root/' 
 });
 
-const faranalyticsnet = new HTTPFileServer({ 
+const faranalyticsnet = new DynamicHTTPFileServer({ 
     doc_root: '/opt/faranalytics/faranalytics.net/doc_root/' 
 });
 
@@ -25,12 +26,12 @@ router.add(
     ngcepochcom.handler
 );
 
-router.add(
-    { 
-        method: /^GET$/i, 
-        headers: { host: /^faranalytics\.net$/i } 
-    },
-    faranalyticsnet.handler
-);
+// router.add(
+//     { 
+//         method: /^GET$/i, 
+//         headers: { host: /^faranalytics\.net$/i } 
+//     },
+//     faranalyticsnet.handler
+// );
 
 const server = new HTTPServer({ port: 3000, host: '0.0.0.0' }, router);
